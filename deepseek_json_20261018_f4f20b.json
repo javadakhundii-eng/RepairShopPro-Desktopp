@@ -1,0 +1,45 @@
+{
+  "name": "repairshop-pro-desktop",
+  "version": "23.0.0",
+  "description": "RepairShop Pro — مدیریت هوشمند تعمیرگاه",
+  "main": "main.js",
+  "author": "RepairShop Pro",
+  "license": "Proprietary",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win nsis --publish never"
+  },
+  "build": {
+    "appId": "com.repairshop.pro",
+    "productName": "RepairShop Pro",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**/*"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ],
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "RepairShop Pro",
+      "artifactName": "RepairShopPro-Setup-${version}.${ext}",
+      "deleteAppDataOnUninstall": false,
+      "include": "installer.nsh"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  }
+}

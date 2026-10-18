@@ -1,0 +1,8 @@
+!macro customInstall
+  CreateDirectory "$DOCUMENTS\RepairShopPro-Backups"
+  WriteRegStr HKCU "Software\RepairShopPro" "InstallPath" "$INSTDIR"
+!macroend
+
+!macro customUnInstall
+  DeleteRegKey HKCU "Software\RepairShopPro"
+!macroend
